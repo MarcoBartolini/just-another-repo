@@ -1,0 +1,28 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'scala'
+    id 'com.github.maiflai.scalatest' version "0.26"
+}
+
+defaultTasks 'clean', 'build', 'test'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.scala-lang:scala-library:2.11.12'
+
+    testImplementation 'org.scalatest:scalatest_2.11:3.0.0'
+    testImplementation 'junit:junit:4.12'
+
+    testRuntime 'org.pegdown:pegdown:1.4.2'
+
+}
+
+test {
+    useJUnit()
+    maxHeapSize = '1G'
+}

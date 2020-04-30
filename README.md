@@ -1,2 +1,2 @@
-# study
-Just for fun
+# Just another repo
+This repo is just for fun

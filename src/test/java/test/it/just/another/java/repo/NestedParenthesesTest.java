@@ -9,9 +9,9 @@ public class NestedParenthesesTest {
     @Test
     public void checkNestedParentheses() {
         assertEquals(false,NestedParentheses.isCorrectlyNested(")("));
-        assertEquals(false,NestedParentheses.isCorrectlyNested("(()()()()()(())(())(((())))))("));
-        assertEquals(true,NestedParentheses.isCorrectlyNested("()"));
-        assertEquals(true,NestedParentheses.isCorrectlyNested("(()()()()()(())(())(((()))))"));
+        assertEquals(false,NestedParentheses.isCorrectlyNested("((1)()()()()(())(())(((())))))("));
+        assertEquals(true,NestedParentheses.isCorrectlyNested("(b)"));
+        assertEquals(true,NestedParentheses.isCorrectlyNested(""));
     }
 
 }

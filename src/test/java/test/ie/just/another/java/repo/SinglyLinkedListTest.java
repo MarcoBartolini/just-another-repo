@@ -11,21 +11,18 @@ public class SinglyLinkedListTest {
     @Test
     public void singlyLinkedList() {
         SinglyLinkedList<String> testSinglyLinkedList = new SinglyLinkedList();
-        testSinglyLinkedList.setHead("first element");
-        testSinglyLinkedList.setTail(
-                new SinglyLinkedList<>("second element",
-                        new SinglyLinkedList<>("third element",
-                                new SinglyLinkedList<>("last element"))));
+        testSinglyLinkedList.insert("first element");
+        testSinglyLinkedList.insert("second element");
+        testSinglyLinkedList.insert("third element");
+        testSinglyLinkedList.insert("fourth element");
 
         List<String> testList =  testSinglyLinkedList.asList();
         assertEquals(testList.get(0), "first element");
+        assertEquals(testList.get(1), "second element");
         assertEquals(testList.size(),4);
 
-        assertEquals("second element", testSinglyLinkedList.tail().head());
+        testSinglyLinkedList.insert("last element");
+        assertEquals("last element", testSinglyLinkedList.asList().get(4));
     }
-
-    // TODO: add jcoco!
-
-
 
 }

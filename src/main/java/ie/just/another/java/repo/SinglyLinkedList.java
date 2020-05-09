@@ -5,46 +5,45 @@ import java.util.List;
 
 public class SinglyLinkedList<T> {
 
-    private T head;
-    private SinglyLinkedList<T> tail;
+    private Node<T> head;
 
-    public SinglyLinkedList() {
+    private static class Node<T> {
 
+        T data;
+        Node next;
+
+        // Constructor
+        Node(T d) {
+            data = d;
+        }
     }
 
-    public SinglyLinkedList(T head) {
-        setHead(head);
-    }
+    public SinglyLinkedList insert(T data) {
 
-    public SinglyLinkedList(T head, SinglyLinkedList<T> tail) {
-        setHead(head);
-        setTail(tail);
-    }
+        Node<T> nodeToAdd = new Node(data);
 
-    public void setHead(T head) {
-        this.head = head;
-    }
+        if (this.head == null) {
+            this.head = nodeToAdd;
+        } else {
+            Node<T> last = this.head;
+            while (last.next != null) {
+                last = last.next;
+            }
 
-    public void setTail(SinglyLinkedList<T> tail) {
-        this.tail = tail;
-    }
+            last.next = nodeToAdd;
+        }
 
-    public T head() {
-        return this.head;
-    }
-
-    public SinglyLinkedList<T> tail() {
-        return this.tail;
+        return this;
     }
 
     public List<T> asList() {
-        return addToList(this,new ArrayList());
+        return addToList(this.head, new ArrayList());
     }
 
-    private List<T> addToList(SinglyLinkedList<T> linkedList, List<T> list) {
-        if (linkedList != null) {
-            list.add(linkedList.head);
-            addToList(linkedList.tail, list);
+    private List<T> addToList(Node<T> node, List<T> list) {
+        if (node != null) {
+            list.add(node.data);
+            addToList(node.next, list);
         }
         return list;
     }

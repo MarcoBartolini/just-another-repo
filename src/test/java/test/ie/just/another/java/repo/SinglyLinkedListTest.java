@@ -1,4 +1,4 @@
-package test.it.just.another.java.repo;
+package test.ie.just.another.java.repo;
 
 import ie.just.another.java.repo.SinglyLinkedList;
 import org.junit.Test;
@@ -20,6 +20,8 @@ public class SinglyLinkedListTest {
         List<String> testList =  testSinglyLinkedList.asList();
         assertEquals(testList.get(0), "first element");
         assertEquals(testList.size(),4);
+
+        assertEquals("second element", testSinglyLinkedList.tail().head());
     }
 
     // TODO: add jcoco!

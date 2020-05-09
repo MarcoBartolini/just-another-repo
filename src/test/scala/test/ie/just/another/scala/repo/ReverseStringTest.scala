@@ -1,4 +1,4 @@
-package test.it.just.another.scala.repo
+package test.ie.just.another.scala.repo
 
 import ie.just.another.scala.repo.ReverseString
 import org.scalatest.{FlatSpec, MustMatchers}

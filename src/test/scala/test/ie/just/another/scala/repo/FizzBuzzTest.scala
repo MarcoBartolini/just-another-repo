@@ -1,5 +1,4 @@
-package test.it.just.another.scala
-
+package test.ie.just.another.scala.repo
 
 import ie.just.another.scala.repo.FizzBuzz
 import org.scalatest.{FlatSpec, MustMatchers}

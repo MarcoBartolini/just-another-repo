@@ -1,20 +1,19 @@
 plugins {
     id 'idea'
     id 'java'
+    id 'jacoco'
     id 'scala'
     id 'com.github.maiflai.scalatest' version "0.26"
     id 'org.scoverage' version "4.0.1"
 }
 
-defaultTasks 'clean', 'build', 'test', 'scalatest', 'checkScoverage'
+defaultTasks 'clean', 'build', 'test', 'scalatest', 'jacocoTestCoverageVerification', 'checkScoverage'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-
-    scoverage 'org.scoverage:scalac-scoverage-plugin_2.11:1.1.0', 'org.scoverage:scalac-scoverage-runtime_2.11:1.1.0'
 
     implementation 'org.scala-lang:scala-library:2.11.12'
 
@@ -23,6 +22,40 @@ dependencies {
 
     testRuntimeOnly 'org.pegdown:pegdown:1.4.2'
 
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/justAnotherRepoJacocoReportDir")
+}
+
+jacocoTestReport {
+   reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+
+            element = 'CLASS'
+            includes = ['ie.just.another.java.*']
+
+            limit {
+                minimum = 1.0
+            }
+        }
+    }
 }
 
 scoverage {

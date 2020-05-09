@@ -1,4 +1,4 @@
-package test.it.just.another.java.repo;
+package test.ie.just.another.java.repo;
 
 import ie.just.another.java.repo.ReverseString;
 import static org.junit.Assert.*;

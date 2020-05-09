@@ -1,4 +1,4 @@
-package test.it.just.another.java.repo;
+package test.ie.just.another.java.repo;
 
 import static org.junit.Assert.*;
 import ie.just.another.java.repo.NestedParentheses;

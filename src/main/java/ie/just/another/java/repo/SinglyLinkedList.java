@@ -19,14 +19,6 @@ public class SinglyLinkedList<T> {
             data = d;
         }
 
-        public T getData() {
-            return data;
-        }
-
-        public Node<T> getNext() {
-            return next;
-        }
-
         @Override
         public String toString() {
             return new StringBuilder("data: ").append(data).append(" index: ").append(index).toString();
@@ -59,6 +51,20 @@ public class SinglyLinkedList<T> {
         return this;
     }
 
+//    public SinglyLinkedList<T> remove(String elementToRemove) {
+//        Node<T> previous= this.head;
+//        Node<T> current = this.head;
+//        while (current != null) {
+//            if (current.data.equals(elementToRemove)) {
+//                previous.next = current.next;
+//            } else {
+//                previous = current;
+//            }
+//            current = current.next;
+//        }
+//        return this;
+//    }
+
     public SinglyLinkedList<T> clear() {
         if (this.head != null) {
             this.head = null;
@@ -89,8 +95,15 @@ public class SinglyLinkedList<T> {
         return size;
     }
 
-    public T getHead() {
-        return head.data;
+    public boolean contains(T elementToSearch) {
+        Node<T> element = this.head;
+        while (element != null) {
+            if (element.data.equals(elementToSearch)) {
+                return true;
+            }
+            element = element.next;
+        }
+        return false;
     }
 
     public void display() {

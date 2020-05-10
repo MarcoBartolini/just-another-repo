@@ -8,7 +8,6 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -47,6 +46,7 @@ public class SinglyLinkedListTest {
 
         assertEquals(testSinglyLinkedList.get(0), "first element");
         assertEquals(testSinglyLinkedList.get(1), "second element");
+        assertEquals(testSinglyLinkedList.get(100), null);
     }
 
     @Test
@@ -115,11 +115,35 @@ public class SinglyLinkedListTest {
 
         SinglyLinkedList<String> testSinglyLinkedList = init();
         testSinglyLinkedList.display();
+
         assertEquals("data: first element index: 0\n" +
                 "data: second element index: 1\n" +
                 "data: third element index: 2\n" +
                 "data: fourth element index: 3\n", outContent.toString());
 
     }
+
+    @Test
+    public void contains() {
+
+        SinglyLinkedList<String> testSinglyLinkedList = init();
+
+        assertEquals(testSinglyLinkedList.contains("second element"),true);
+        assertEquals(testSinglyLinkedList.contains("fifth element"),false);
+
+    }
+
+//    @Test
+//    public void remove() {
+//        SinglyLinkedList<String> testSinglyLinkedList = init();
+//        assertEquals(4, testSinglyLinkedList.size());
+//
+//        testSinglyLinkedList.remove("fifth element");
+//        assertEquals(4, testSinglyLinkedList.size());
+//
+//        testSinglyLinkedList.remove("second element");
+//        assertEquals(3, testSinglyLinkedList.size());
+//
+//    }
 
 }

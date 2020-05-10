@@ -128,22 +128,30 @@ public class SinglyLinkedListTest {
 
         SinglyLinkedList<String> testSinglyLinkedList = init();
 
-        assertEquals(testSinglyLinkedList.contains("second element"),true);
-        assertEquals(testSinglyLinkedList.contains("fifth element"),false);
+        assertEquals(testSinglyLinkedList.contains("second element"), true);
+        assertEquals(testSinglyLinkedList.contains("fifth element"), false);
 
     }
 
-//    @Test
-//    public void remove() {
-//        SinglyLinkedList<String> testSinglyLinkedList = init();
-//        assertEquals(4, testSinglyLinkedList.size());
-//
-//        testSinglyLinkedList.remove("fifth element");
-//        assertEquals(4, testSinglyLinkedList.size());
-//
-//        testSinglyLinkedList.remove("second element");
-//        assertEquals(3, testSinglyLinkedList.size());
-//
-//    }
+    @Test
+    public void remove() {
+        SinglyLinkedList<String> testSinglyLinkedList = init();
+        assertEquals(4, testSinglyLinkedList.size());
+
+        testSinglyLinkedList.remove("fifth element");
+        assertEquals(4, testSinglyLinkedList.size());
+
+        testSinglyLinkedList.remove("second element");
+        assertEquals(3, testSinglyLinkedList.size());
+        assertEquals(false, testSinglyLinkedList.contains("second element"));
+        assertEquals("first element", testSinglyLinkedList.get(0));
+        assertEquals("third element", testSinglyLinkedList.get(1));
+        assertEquals("fourth element", testSinglyLinkedList.get(2));
+
+        testSinglyLinkedList.remove("first element");
+        assertEquals(2, testSinglyLinkedList.size());
+        assertEquals(false, testSinglyLinkedList.contains("first element"));
+
+    }
 
 }

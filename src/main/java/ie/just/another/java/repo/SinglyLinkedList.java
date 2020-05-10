@@ -51,19 +51,29 @@ public class SinglyLinkedList<T> {
         return this;
     }
 
-//    public SinglyLinkedList<T> remove(String elementToRemove) {
-//        Node<T> previous= this.head;
-//        Node<T> current = this.head;
-//        while (current != null) {
-//            if (current.data.equals(elementToRemove)) {
-//                previous.next = current.next;
-//            } else {
-//                previous = current;
-//            }
-//            current = current.next;
-//        }
-//        return this;
-//    }
+    public SinglyLinkedList<T> remove(String elementToRemove) {
+        Node<T> previous = this.head;
+        Node<T> current = this.head;
+        boolean modified = false;
+        while (current != null) {
+            if (current.data.equals(elementToRemove)) {
+                if (current.index == 0) {
+                    this.head = current.next;
+                } else {
+                    previous.next = current.next;
+                }
+                size--;
+                modified = true;
+            } else {
+                if (modified) {
+                    current.index -= 1;
+                }
+                previous = current;
+            }
+            current = current.next;
+        }
+        return this;
+    }
 
     public SinglyLinkedList<T> clear() {
         if (this.head != null) {

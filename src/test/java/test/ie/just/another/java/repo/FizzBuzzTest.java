@@ -1,7 +1,7 @@
 package test.ie.just.another.java.repo;
 
 
-import ie.just.another.java.repo.FizzBuzz;
+import ie.just.another.java.repo.impl.FizzBuzz;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,4 +1,4 @@
-package ie.just.another.java.repo;
+package ie.just.another.java.repo.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,7 +51,7 @@ public class SinglyLinkedList<T> {
         return this;
     }
 
-    public SinglyLinkedList<T> remove(String elementToRemove) {
+    public SinglyLinkedList<T> remove(T elementToRemove) {
         Node<T> previous = this.head;
         Node<T> current = this.head;
         boolean modified = false;

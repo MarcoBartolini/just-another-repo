@@ -1,6 +1,6 @@
 package test.ie.just.another.java.repo;
 
-import ie.just.another.java.repo.SinglyLinkedList;
+import ie.just.another.java.repo.impl.SinglyLinkedList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

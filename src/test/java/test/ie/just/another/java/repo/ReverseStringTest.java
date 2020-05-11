@@ -1,6 +1,6 @@
 package test.ie.just.another.java.repo;
 
-import ie.just.another.java.repo.ReverseString;
+import ie.just.another.java.repo.impl.ReverseString;
 import static org.junit.Assert.*;
 import org.junit.Test;
 

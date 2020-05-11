@@ -1,7 +1,7 @@
 package test.ie.just.another.java.repo;
 
 import static org.junit.Assert.*;
-import ie.just.another.java.repo.NestedParentheses;
+import ie.just.another.java.repo.impl.NestedParentheses;
 import org.junit.Test;
 
 public class NestedParenthesesTest {

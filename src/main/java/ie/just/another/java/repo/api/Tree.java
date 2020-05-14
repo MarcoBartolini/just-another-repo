@@ -8,6 +8,8 @@ public interface Tree {
 
     public void diplayPreorderTraversal();
 
+    public void displayPreorderTraversalNonRecursive();
+
     public void diplayInorderTraversal();
 
     public void diplayPostorderTraversal();

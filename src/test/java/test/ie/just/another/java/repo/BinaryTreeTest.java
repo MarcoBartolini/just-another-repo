@@ -60,6 +60,24 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void displayPreOrderNonRecurisve() {
+
+        Tree binaryTree = init();
+        binaryTree.displayPreorderTraversalNonRecursive();
+
+        assertEquals("100\n" +
+                "50\n" +
+                "25\n" +
+                "75\n" +
+                "150\n" +
+                "125\n" +
+                "110\n" +
+                "175\n", outContent.toString());
+
+    }
+
+
+    @Test
     public void displayInorder() {
 
         Tree binaryTree = init();

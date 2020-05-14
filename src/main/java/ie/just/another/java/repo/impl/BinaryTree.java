@@ -2,6 +2,8 @@ package ie.just.another.java.repo.impl;
 
 import ie.just.another.java.repo.api.Tree;
 
+import java.util.Stack;
+
 public class BinaryTree implements Tree {
 
     private Node root;
@@ -28,7 +30,7 @@ public class BinaryTree implements Tree {
     }
 
     private void diplayPreorderTraversalRecursive(Node current) {
-        if(current != null) {
+        if (current != null) {
             System.out.println(current.value);
             diplayPreorderTraversalRecursive(current.left);
             diplayPreorderTraversalRecursive(current.right);
@@ -36,12 +38,28 @@ public class BinaryTree implements Tree {
     }
 
     @Override
+    public void displayPreorderTraversalNonRecursive() {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            System.out.println(current.value);
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+    }
+    
+    @Override
     public void diplayInorderTraversal() {
         displayInorderTraversalRecursive(root);
     }
 
     private void displayInorderTraversalRecursive(Node current) {
-        if(current != null) {
+        if (current != null) {
             diplayPreorderTraversalRecursive(current.left);
             System.out.println(current.value);
             diplayPreorderTraversalRecursive(current.right);
@@ -54,7 +72,7 @@ public class BinaryTree implements Tree {
     }
 
     private void displayPostorderTraversalRecursive(Node current) {
-        if(current != null) {
+        if (current != null) {
             diplayPreorderTraversalRecursive(current.left);
             diplayPreorderTraversalRecursive(current.right);
             System.out.println(current.value);

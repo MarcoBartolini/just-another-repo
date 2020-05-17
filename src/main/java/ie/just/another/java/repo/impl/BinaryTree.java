@@ -2,6 +2,8 @@ package ie.just.another.java.repo.impl;
 
 import ie.just.another.java.repo.api.Tree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class BinaryTree implements Tree {
@@ -25,7 +27,7 @@ public class BinaryTree implements Tree {
     }
 
     @Override
-    public void diplayPreorderTraversal() {
+    public void displayPreorderTraversal() {
         diplayPreorderTraversalRecursive(root);
     }
 
@@ -52,9 +54,9 @@ public class BinaryTree implements Tree {
             }
         }
     }
-    
+
     @Override
-    public void diplayInorderTraversal() {
+    public void displayInorderTraversal() {
         displayInorderTraversalRecursive(root);
     }
 
@@ -67,7 +69,7 @@ public class BinaryTree implements Tree {
     }
 
     @Override
-    public void diplayPostorderTraversal() {
+    public void displayPostorderTraversal() {
         displayPostorderTraversalRecursive(root);
     }
 
@@ -79,6 +81,53 @@ public class BinaryTree implements Tree {
 
         }
     }
+
+    @Override
+    public int getLowestCommonAncestor(int firstValue, int secondValue) {
+        List<Integer> firstValueParents = getParents(firstValue, root, new ArrayList<>());
+        List<Integer> secondValueParents = getParents(secondValue, root, new ArrayList<>());
+        if (firstValueParents.size() > secondValueParents.size()) {
+            return firstValueParents.get(secondValueParents.size() - 1);
+        } else {
+            return secondValueParents.get(firstValueParents.size() - 1);
+        }
+    }
+
+    private List<Integer> getParents(int value, Node current, List<Integer> parents) {
+        if (current != null) {
+            if (current.value == value) {
+                return parents;
+            } else {
+                parents.add(current.value);
+                if (current.value > value) {
+                    getParents(value, current.left, parents);
+                } else if (current.value < value) {
+                    getParents(value, current.right, parents);
+                }
+            }
+        }
+        return parents;
+    }
+
+    @Override
+    public Integer getLowestCommonAncestorSecondVersion(int firstValue, int secondValue) {
+        Node current = root;
+        while (current != null) {
+            System.out.println("CURRENT " + current.value);
+            if(firstValue > current.value && secondValue > current.value) {
+                System.out.println("CURRENT GO RIGHT");
+                current = current.right;
+            } else if(firstValue < current.value && secondValue < current.value) {
+                System.out.println("CURRENT GO LEFT");
+                current = current.left;
+            } else {
+                System.out.println("RETURN " + current.value);
+                return current.value;
+            }
+        }
+        return null;
+    }
+
 
     public Node addRecursive(Node current, int value) {
         if (current == null) {

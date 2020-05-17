@@ -46,7 +46,7 @@ public class BinaryTreeTest {
     public void displayPreOrder() {
 
         Tree binaryTree = init();
-        binaryTree.diplayPreorderTraversal();
+        binaryTree.displayPreorderTraversal();
 
         assertEquals("100\n" +
                 "50\n" +
@@ -81,7 +81,7 @@ public class BinaryTreeTest {
     public void displayInorder() {
 
         Tree binaryTree = init();
-        binaryTree.diplayInorderTraversal();
+        binaryTree.displayInorderTraversal();
 
         assertEquals("50\n" +
                 "25\n" +
@@ -98,7 +98,7 @@ public class BinaryTreeTest {
     public void displayPostorder() {
 
         Tree binaryTree = init();
-        binaryTree.diplayPostorderTraversal();
+        binaryTree.displayPostorderTraversal();
 
         assertEquals("50\n" +
                 "25\n" +
@@ -111,5 +111,52 @@ public class BinaryTreeTest {
 
     }
 
+    @Test
+    public void lowestCommonAncestor() {
+        Tree binaryTree = new BinaryTree();
+
+        binaryTree
+                .add(20)
+                .add(8)
+                .add(22)
+                .add(4)
+                .add(12)
+                .add(10)
+                .add(14);
+
+        assertEquals(8, binaryTree.getLowestCommonAncestor(4, 14));
+        assertEquals(8, binaryTree.getLowestCommonAncestor(14, 4));
+        assertEquals(8, binaryTree.getLowestCommonAncestor(4, 12));
+
+        assertEquals(new Integer(8), binaryTree.getLowestCommonAncestorSecondVersion(4, 14));
+        assertEquals(new Integer(8), binaryTree.getLowestCommonAncestorSecondVersion(14, 4));
+        assertEquals(new Integer(8), binaryTree.getLowestCommonAncestorSecondVersion(4, 12));
+
+        binaryTree.add(15);
+
+        assertEquals(12, binaryTree.getLowestCommonAncestor(10, 15));
+
+        assertEquals(new Integer(12), binaryTree.getLowestCommonAncestorSecondVersion(10, 15));
+
+        assertEquals(null, new BinaryTree().getLowestCommonAncestorSecondVersion(10, 15));
+
+    }
+
+    public static void main(String args[]) {
+
+        Tree binaryTree = new BinaryTree();
+
+        binaryTree
+                .add(20)
+                .add(8)
+                .add(22)
+                .add(4)
+                .add(12)
+                .add(10)
+                .add(14);
+
+        System.out.println( "RESULT " + binaryTree.getLowestCommonAncestorSecondVersion(4, 14));
+
+    }
 
 }

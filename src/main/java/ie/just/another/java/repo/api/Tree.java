@@ -1,17 +1,19 @@
 package ie.just.another.java.repo.api;
 
-import ie.just.another.java.repo.impl.BinaryTree;
-
 public interface Tree {
 
-    public Tree add(int value);
+    Tree add(int value);
 
-    public void diplayPreorderTraversal();
+    void displayPreorderTraversal();
 
-    public void displayPreorderTraversalNonRecursive();
+    void displayPreorderTraversalNonRecursive();
 
-    public void diplayInorderTraversal();
+    void displayInorderTraversal();
 
-    public void diplayPostorderTraversal();
+    void displayPostorderTraversal();
+
+    int getLowestCommonAncestor(int firstValue, int secondValue);
+
+    Integer getLowestCommonAncestorSecondVersion(int firstValue, int secondValue);
 
 }

@@ -113,15 +113,11 @@ public class BinaryTree implements Tree {
     public Integer getLowestCommonAncestorSecondVersion(int firstValue, int secondValue) {
         Node current = root;
         while (current != null) {
-            System.out.println("CURRENT " + current.value);
             if(firstValue > current.value && secondValue > current.value) {
-                System.out.println("CURRENT GO RIGHT");
                 current = current.right;
             } else if(firstValue < current.value && secondValue < current.value) {
-                System.out.println("CURRENT GO LEFT");
                 current = current.left;
             } else {
-                System.out.println("RETURN " + current.value);
                 return current.value;
             }
         }

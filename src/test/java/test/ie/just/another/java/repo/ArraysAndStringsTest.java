@@ -25,4 +25,15 @@ public class ArraysAndStringsTest {
         assertEquals(null, ArraysAndStrings.findFirstNonRepeatedCharacter("toto"));
     }
 
+
+    @Test
+    public void removeChar() {
+        assertEquals("", ArraysAndStrings.removeChar("", null));
+        assertEquals("", ArraysAndStrings.removeChar("", ""));
+        assertEquals(null, ArraysAndStrings.removeChar(null, null));
+        assertEquals(null, ArraysAndStrings.removeChar(null, ""));
+        assertEquals("test", ArraysAndStrings.removeChar("testrr", "r"));
+        assertEquals("test123456", ArraysAndStrings.removeChar("test123456789", "789"));
+        assertEquals("test", ArraysAndStrings.removeChar("taeiiisazurt", "aizur"));
+    }
 }

@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class ArraysAndStrings {
 
-    private ArraysAndStrings(){
-        
+    private ArraysAndStrings() {
+
     }
 
     /**
@@ -43,6 +43,26 @@ public class ArraysAndStrings {
         }
 
         return null;
+    }
+
+    /**
+     * This method will remove all the single char from the provided string
+     *
+     * @param str    the string to clean
+     * @param remove the series of char to remove
+     * @return the inital string without the char contained in the remove parameter
+     */
+    public static String removeChar(String str, String remove) {
+
+        if (str == null || remove == null || "".equals(str.trim()) || "".equals(remove.trim())) {
+            return str;
+        }
+
+        for (char c : remove.toCharArray()) {
+            str = str.replace(String.valueOf(c), "");
+        }
+
+        return str;
     }
 
 

@@ -12,7 +12,7 @@ class InMemoryAdapter extends PersonPort {
   var persons: mutable.Map[String, Person] = new mutable.HashMap[String, Person]()
 
   override def createPerson(uuid: String, firstName: String, lastName: String, age: Int): Future[Either[CreatePersonException, Option[Person]]] = Future {
-    if (persons.get(uuid).isEmpty) {
+    if (!persons.contains(uuid)) {
       Right(persons.get(uuid))
     } else {
       Left(CreatePersonException("Could not create the person"))
@@ -20,7 +20,7 @@ class InMemoryAdapter extends PersonPort {
   }
 
   override def findPerson(uuid: String): Future[Either[FindPersonException, Option[Person]]] = Future {
-    if (persons.get(uuid).isDefined) {
+    if (persons.contains(uuid)) {
       Right(persons.get(uuid))
     } else {
       Left(FindPersonException("Could not find the person"))
@@ -28,7 +28,7 @@ class InMemoryAdapter extends PersonPort {
   }
 
   override def updatePerson(person: Person): Future[Either[UpdatePersonException, Option[Person]]] = Future {
-    if (persons.get(person.uuid).isDefined) {
+    if (persons.contains(person.uuid)) {
       persons + (person.uuid -> person)
       Right(persons.get(person.uuid))
     } else {
@@ -37,7 +37,7 @@ class InMemoryAdapter extends PersonPort {
   }
 
   override def deletePerson(uuid: String): Future[Either[DeletePersonException, Boolean]] = Future {
-    if (persons.get(uuid).isDefined) {
+    if (persons.contains(uuid)) {
       persons.-(uuid)
       Right(true)
     } else {
@@ -46,6 +46,6 @@ class InMemoryAdapter extends PersonPort {
   }
 }
 
-object PersonController {
+object InMemoryAdapter {
   def apply(): InMemoryAdapter = new InMemoryAdapter()
 }
